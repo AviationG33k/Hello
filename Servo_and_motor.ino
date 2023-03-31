@@ -8,9 +8,9 @@
 static const int servoPin = 13; //for servo
 Servo servo1;
 
-int motor1Pin1 = 22; //for Dc motor
-int motor1Pin2 = 21; //for Dc motor
-int enable1Pin = 23; //for Dc motor
+int motor1Pin1 = 27; //for Dc motor
+int motor1Pin2 = 26; //for Dc motor
+int enable1Pin = 14; //for Dc motor
 
 // Setting PWM properties for motor
 const int freq = 30000;
