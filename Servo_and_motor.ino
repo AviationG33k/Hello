@@ -1,30 +1,32 @@
-#include <Servo.h>
+#include <Servo.h> //includes a servo setting
 
 /*
  * Description:
- * Example for setting the minimal and maximal angle.
+ * Example for setting the minimal and maximal angle while Motor is running
  */ 
 
-static const int servoPin = 13;
-int motor1Pin1 = 22; 
-int motor1Pin2 = 21; 
-int enable1Pin = 23; 
+static const int servoPin = 13; //for servo
+Servo servo1;
 
-// Setting PWM properties
+int motor1Pin1 = 22; //for Dc motor
+int motor1Pin2 = 21; //for Dc motor
+int enable1Pin = 23; //for Dc motor
+
+// Setting PWM properties for motor
 const int freq = 30000;
 const int pwmChannel = 0;
 const int resolution = 8;
 int dutyCycle = 100;
 
-Servo servo1;
+
 
 void setup() {
-  // sets the pins as outputs:
+  // sets the pins as outputs for motor:
   pinMode(motor1Pin1, OUTPUT);
   pinMode(motor1Pin2, OUTPUT);
   pinMode(enable1Pin, OUTPUT);
   
-  // configure LED PWM functionalitites
+  // configure LED PWM functionalitites for servo
   ledcSetup(pwmChannel, freq, resolution);
   
   // attach the channel to the GPIO to be controlled
@@ -39,10 +41,10 @@ void setup() {
 }
 
 void loop() {
-   serve();
-   // motor();
+   serve(); // this the file for servo in loop
+    motor(); // this the file for motor in loop
 }
-void serve()
+void serve() // this the file for servo in loop
 {
   for(int posDegrees = 0; posDegrees <= 180; posDegrees++) {
         servo1.write(posDegrees);
@@ -56,7 +58,7 @@ void serve()
         delay(20);
     }
 }
-void motor()
+void motor() // this the file for dc motor in loop
 {
 
   // Move DC motor forward with increasing speed
